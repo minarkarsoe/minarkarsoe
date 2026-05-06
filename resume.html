@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Min Arkar Soe – Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --accent: #4f46e5;
+      --accent-light: #6366f1;
+      --text: #111827;
+      --text2: #374151;
+      --text3: #6b7280;
+      --border: #e5e7eb;
+      --bg: #f9fafb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg); font-size: 13.5px; line-height: 1.6; }
+    ul { list-style: none; }
+    a { color: var(--accent); text-decoration: none; }
+
+    /* PRINT BTN */
+    .print-bar {
+      background: #fff; border-bottom: 1px solid var(--border); padding: 12px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .print-bar span { font-size: 0.85rem; color: var(--text3); }
+    .print-btn {
+      background: var(--accent); color: #fff; border: none; padding: 8px 24px;
+      border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .print-btn:hover { opacity: 0.9; }
+
+    /* PAGE */
+    .page {
+      max-width: 820px; margin: 32px auto; background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden;
+    }
+
+    /* HEADER */
+    .r-header {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e40af 100%);
+      color: #fff; padding: 40px 48px 32px;
+    }
+    .r-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; letter-spacing: -0.5px; }
+    .r-header .title { font-size: 1rem; color: #a5b4fc; font-weight: 500; margin-top: 4px; margin-bottom: 20px; }
+    .r-contacts { display: flex; flex-wrap: wrap; gap: 20px; }
+    .r-contact-item { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: #c7d2fe; }
+
+    /* BODY */
+    .r-body { display: grid; grid-template-columns: 240px 1fr; gap: 0; }
+    .r-sidebar { background: #f8faff; border-right: 1px solid var(--border); padding: 32px 24px; }
+    .r-main { padding: 32px 36px; }
+
+    /* SECTIONS */
+    .r-section { margin-bottom: 28px; }
+    .r-section-title {
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent);
+      border-bottom: 2px solid var(--accent); padding-bottom: 6px; margin-bottom: 14px;
+    }
+
+    /* SIDEBAR – SKILLS */
+    .skill-group { margin-bottom: 16px; }
+    .skill-group-name { font-weight: 700; font-size: 0.82rem; color: var(--text); margin-bottom: 8px; }
+    .s-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .s-tag {
+      background: #ede9fe; color: #4f46e5; padding: 2px 9px;
+      border-radius: 100px; font-size: 0.72rem; font-weight: 600;
+    }
+    .s-tag.dark { background: #dbeafe; color: #1d4ed8; }
+    .s-tag.green { background: #d1fae5; color: #065f46; }
+    .s-tag.gray { background: #f3f4f6; color: #374151; }
+
+    /* SUMMARY */
+    .r-summary { color: var(--text2); font-size: 0.9rem; border-left: 3px solid var(--accent); padding-left: 14px; margin-bottom: 28px; }
+
+    /* EXPERIENCE */
+    .exp-item { margin-bottom: 22px; }
+    .exp-header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    .exp-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.97rem; }
+    .exp-company { color: var(--accent-light); font-size: 0.85rem; font-weight: 600; }
+    .exp-date { font-size: 0.75rem; color: var(--text3); white-space: nowrap; }
+    .exp-bullets { margin-top: 8px; display: flex; flex-direction: column; gap: 4px; }
+    .exp-bullets li { font-size: 0.85rem; color: var(--text2); padding-left: 14px; position: relative; }
+    .exp-bullets li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; top: 2px; }
+    .exp-bullets strong { color: var(--text); }
+    .exp-tech { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+    .exp-tech span { background: #f3f4f6; color: var(--text3); padding: 1px 8px; border-radius: 100px; font-size: 0.7rem; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
+
+    /* ACHIEVEMENTS */
+    .ach-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+    .ach-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+    .ach-text strong { font-size: 0.88rem; display: block; }
+    .ach-text span { font-size: 0.8rem; color: var(--text3); }
+
+    /* SIDEBAR – other sections */
+    .edu-name { font-weight: 700; font-size: 0.88rem; }
+    .edu-sub { font-size: 0.78rem; color: var(--text3); margin-top: 2px; }
+    .lang-item { display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 6px; }
+    .lang-level { color: var(--text3); }
+
+    @media print {
+      .print-bar { display: none; }
+      body { background: #fff; }
+      .page { box-shadow: none; border-radius: 0; margin: 0; max-width: 100%; }
+      .r-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .s-tag, .s-tag.dark, .s-tag.green, .s-tag.gray { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="print-bar">
+    <span>Min Arkar Soe – Senior .NET Backend Engineer</span>
+    <button class="print-btn" onclick="window.print()">⬇ Print / Save as PDF</button>
+  </div>
+
+  <div class="page">
+    <!-- HEADER -->
+    <div class="r-header">
+      <h1>Min Arkar Soe</h1>
+      <div class="title">Senior .NET Backend Engineer · AWS Serverless Architect</div>
+      <div class="r-contacts">
+        <div class="r-contact-item">✉ minarkarsoe@gmail.com</div>
+        <div class="r-contact-item">📞 +66 986 509 358</div>
+        <div class="r-contact-item">🔗 linkedin.com/in/min-arkar-soe</div>
+        <div class="r-contact-item">📍 Chonburi, Thailand (Open to Relocation)</div>
+      </div>
+    </div>
+
+    <div class="r-body">
+      <!-- SIDEBAR -->
+      <div class="r-sidebar">
+        <div class="r-section">
+          <div class="r-section-title">Technical Skills</div>
+
+          <div class="skill-group">
+            <div class="skill-group-name">Languages</div>
+            <div class="s-tags">
+              <span class="s-tag">C# / .NET 8</span>
+              <span class="s-tag">SQL</span>
+              <span class="s-tag">JavaScript</span>
+              <span class="s-tag">TypeScript</span>
+              <span class="s-tag">PHP</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-name">Frameworks</div>
+            <div class="s-tags">
+              <span class="s-tag">ASP.NET Core</span>
+              <span class="s-tag">Entity Framework</span>
+              <span class="s-tag">MediatR / CQRS</span>
+              <span class="s-tag">React (Vite)</span>
+              <span class="s-tag">Node.js / Koa</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-name">AWS Cloud</div>
+            <div class="s-tags">
+              <span class="s-tag dark">Lambda</span>
+              <span class="s-tag dark">SQS</span>
+              <span class="s-tag dark">API Gateway</span>
+              <span class="s-tag dark">DynamoDB</span>
+              <span class="s-tag dark">RDS</span>
+              <span class="s-tag dark">EventBridge</span>
+              <span class="s-tag dark">S3 / CloudFront</span>
+              <span class="s-tag dark">SAM / CFN</span>
+              <span class="s-tag dark">CloudWatch</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-name">Databases</div>
+            <div class="s-tags">
+              <span class="s-tag green">SQL Server</span>
+              <span class="s-tag green">PostgreSQL</span>
+              <span class="s-tag green">MySQL</span>
+              <span class="s-tag green">DynamoDB</span>
+              <span class="s-tag green">Redis</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-name">Architecture</div>
+            <div class="s-tags">
+              <span class="s-tag gray">Clean Architecture</span>
+              <span class="s-tag gray">Microservices</span>
+              <span class="s-tag gray">Event-Driven</span>
+              <span class="s-tag gray">Outbox Pattern</span>
+              <span class="s-tag gray">State Machine</span>
+              <span class="s-tag gray">Idempotency</span>
+              <span class="s-tag gray">CQRS</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-name">DevOps & Tools</div>
+            <div class="s-tags">
+              <span class="s-tag gray">Docker</span>
+              <span class="s-tag gray">CI/CD</span>
+              <span class="s-tag gray">Git</span>
+              <span class="s-tag gray">Azure DevOps</span>
+              <span class="s-tag gray">Stripe API</span>
+              <span class="s-tag gray">FCM Push</span>
+              <span class="s-tag gray">Swagger</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="r-section">
+          <div class="r-section-title">Education</div>
+          <div class="edu-name">BSc. Computer Science</div>
+          <div class="edu-sub">University of Computer Studies, Yangon</div>
+          <div class="edu-sub">2014 – 2019</div>
+        </div>
+
+        <div class="r-section">
+          <div class="r-section-title">Languages</div>
+          <div class="lang-item"><span>Burmese</span><span class="lang-level">Native</span></div>
+          <div class="lang-item"><span>English</span><span class="lang-level">Professional</span></div>
+        </div>
+
+        <div class="r-section">
+          <div class="r-section-title">Links</div>
+          <div style="font-size:0.82rem; color: var(--text2); margin-bottom:6px;">
+            🔗 <a href="https://www.linkedin.com/in/min-arkar-soe/">linkedin.com/in/min-arkar-soe</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN -->
+      <div class="r-main">
+        <p class="r-summary">
+          Senior .NET Backend Engineer with <strong>4+ years</strong> designing and delivering production-grade microservices. Currently architecting a full-scale <strong>AWS serverless delivery platform</strong> — 10+ independently deployable services using Lambda, SQS, DynamoDB, EventBridge and SQL Server. Previously built mission-critical transaction backends for <strong>UAB Bank, Myanmar</strong>. Hackathon champion. Self-published app founder. Available immediately in Thailand.
+        </p>
+
+        <div class="r-section">
+          <div class="r-section-title">Work Experience</div>
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Senior Backend Engineer <span style="color:var(--text3);font-weight:400;">—</span> <span class="exp-company">Send Delivery Platform</span></div>
+              </div>
+              <div class="exp-date">Oct 2025 – Present</div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Designed <strong>Order State Engine</strong> (.NET 8 Lambda) with strict state machine, optimistic concurrency, and DynamoDB idempotency layer</li>
+              <li>Built <strong>Outbox Pattern worker</strong> (EventBridge-triggered Lambda) for reliable event dispatch to SQS: Payment, Notification, Discount Engine, Assignment services</li>
+              <li>Engineered <strong>DeliveryBuddy Assignment Service</strong> with real-time geolocation matching (3km accept radius, 100m pickup proximity, 15-min location freshness)</li>
+              <li>Implemented <strong>Payment microservice</strong>: wallet credits, coin/point refunds, Stripe integration, invoice generation</li>
+              <li>Built <strong>Discount Engine</strong>: voucher reservation, user fact store, and release flows via SQS events</li>
+              <li>Developed <strong>Send Admin API</strong> (ASP.NET Core 6) — fee management (delivery, courier, platform, distance, vehicle fees), incentive & point/coin setup, discount/voucher rules, and service area configuration backed by AWS Cognito auth, KMS payload encryption, and SNS audit events</li>
+              <li>Built <strong>Send Order API</strong> — full order lifecycle management (cart, order creation, modifications, refunds) with dual SQL Server + DynamoDB audit logging and AutoMapper-based DTO pipeline</li>
+              <li>Contributed to <strong>Send User, Payment, Courier, ServiceProvider, ThirdParty & LiveHosting APIs</strong> — layered ASP.NET Core 6 microservices with EF Core, Repository pattern, and shared AWS Cognito/KMS/DynamoDB infrastructure</li>
+              <li>Managed SAM/CloudFormation deployments across UAT and Production environments</li>
+            </ul>
+            <div class="exp-tech">
+              <span>.NET 8</span><span>ASP.NET Core 6</span><span>AWS Lambda</span><span>SQS</span><span>DynamoDB</span><span>RDS SQL Server</span><span>EventBridge</span><span>SAM</span><span>API Gateway</span><span>Cognito</span><span>KMS</span><span>SNS</span><span>EF Core</span><span>Docker</span>
+            </div>
+          </div>
+          <hr class="divider" />
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Full Stack Developer <span style="color:var(--text3);font-weight:400;">—</span> <span class="exp-company">Freelance / Contract</span></div>
+              </div>
+              <div class="exp-date">Jun 2024 – Sep 2025</div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Built ATS (Applicant Tracking System) with subscription plans and <strong>Stripe</strong> billing</li>
+              <li>Developed CMS using <strong>.NET Core 8 + React (Vite)</strong>, Amazon S3 media storage, CloudFront CDN</li>
+              <li>Implemented Clean Architecture with MediatR, JWT auth, and Redux Toolkit state management</li>
+            </ul>
+            <div class="exp-tech">
+              <span>.NET 8</span><span>React</span><span>Stripe</span><span>S3</span><span>CloudFront</span><span>JWT</span><span>MediatR</span>
+            </div>
+          </div>
+          <hr class="divider" />
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Senior Backend Developer <span style="color:var(--text3);font-weight:400;">—</span> <span class="exp-company">UAB Bank</span></div>
+              </div>
+              <div class="exp-date">Dec 2021 – Aug 2023</div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Built backend services for <strong>Installments, Gold Trading, and Wallet</strong> banking products</li>
+              <li>Integrated with <strong>UAB Pay & PayPlus</strong> mobile banking apps (ASP.NET Core 3.1)</li>
+              <li>Designed paperless transaction workflows for branch operations</li>
+            </ul>
+            <div class="exp-tech">
+              <span>ASP.NET Core 3.1</span><span>SQL Server</span><span>REST API</span><span>Banking Systems</span>
+            </div>
+          </div>
+          <hr class="divider" />
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Junior Web Developer <span style="color:var(--text3);font-weight:400;">—</span> <span class="exp-company">Eleven Media Group</span></div>
+              </div>
+              <div class="exp-date">Jul 2020 – Mar 2021</div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Maintained news media websites using Drupal CMS, PHP, and SQL</li>
+            </ul>
+          </div>
+          <hr class="divider" />
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Node.js Developer Intern <span style="color:var(--text3);font-weight:400;">—</span> <span class="exp-company">Irrahub Myanmar Co., Ltd</span></div>
+              </div>
+              <div class="exp-date">May 2019 – Aug 2019</div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Built mobile car repair platform: React (Ant Design) + Node.js (Koa) + MySQL + Knex.js</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="r-section">
+          <div class="r-section-title">Achievements & Projects</div>
+          <div class="ach-item">
+            <div class="ach-icon">🏆</div>
+            <div class="ach-text">
+              <strong>1st Place — Uni Hack Challenge 2018</strong>
+              <span>Team achievement · Cross-university competitive hackathon across Myanmar universities</span>
+            </div>
+          </div>
+          <div class="ach-item">
+            <div class="ach-icon">📱</div>
+            <div class="ach-text">
+              <strong>Co-Founder — ReadMal (Book App)</strong>
+              <span>Co-built chat-style reading app with cinematic sound effects as part of a founding team. Sustained 50–100 DAU for over a year</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
